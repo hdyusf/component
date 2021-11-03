@@ -1,28 +1,60 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Grid :column="3" :padding="10">
+      <div v-for="(item, index) of gridList" :key="index">{{index}}</div>
+    </Grid>
+    <Space :height="30"></Space>
+    <div>222</div>
+    <GoChromeMask :image="require('@/assets/images/g1.png')"></GoChromeMask>
+    <div class="mobileBox">
+      <Empty :topSpace='30'></Empty>
+    </div>
+    <TextBox :fontSize='34' color='blue'>疯狂a就发动a</TextBox>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  components: {},
+  data() {
+    return {
+      gridList: []
+    }
+  },
+  created() {
+    this.gridList = new Array(15).fill(1);
   }
-}
+};
 </script>
 
-<style>
+<style lang="less">
+body {
+  margin: 0;
+  padding: 0;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  padding: 30px;
+}
+.GridBox {
+  > div {
+    height: 100px;
+    // background-color: gray;
+    border: 1px solid gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+  }
+}
+.mobileBox {
+  width: 300px;
+  height: 400px;
+  border: 1px solid gray;
 }
 </style>
